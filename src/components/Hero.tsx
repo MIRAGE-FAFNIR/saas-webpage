@@ -118,7 +118,7 @@ export const Hero = () => {
                   <div className="w-3 h-3 rounded-full bg-green-500/60" />
                 </div>
                 <div className="flex-1 flex justify-center">
-                  <div className="px-4 py-1 rounded-md bg-muted text-xs text-muted-foreground">
+                  <div className="px-4 py-1.5 rounded-md bg-background/80 border border-border text-sm text-foreground font-medium">
                     app.nexus.dev
                   </div>
                 </div>
