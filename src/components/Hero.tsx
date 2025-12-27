@@ -126,19 +126,62 @@ export const Hero = () => {
               
               {/* Dashboard Preview */}
               <div className="p-6 min-h-[300px] md:min-h-[400px] bg-background">
+                {/* Metrics Row */}
                 <div className="grid grid-cols-3 gap-4 mb-6">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="h-24 rounded-lg bg-secondary/50 flex items-center justify-center">
-                      <div className="w-16 h-16 rounded-lg bg-gradient-primary opacity-50" />
+                  {[
+                    { label: "Total Revenue", value: "$48,352", change: "+12.5%", color: "text-green-400" },
+                    { label: "Active Users", value: "2,847", change: "+8.2%", color: "text-green-400" },
+                    { label: "Conversion", value: "3.24%", change: "+2.1%", color: "text-green-400" },
+                  ].map((metric, i) => (
+                    <div key={i} className="p-4 rounded-lg bg-secondary/30 border border-border">
+                      <p className="text-xs text-muted-foreground mb-1">{metric.label}</p>
+                      <p className="text-xl font-bold text-foreground">{metric.value}</p>
+                      <p className={`text-xs ${metric.color}`}>{metric.change}</p>
                     </div>
                   ))}
                 </div>
-                <div className="space-y-3">
-                  <div className="h-4 bg-secondary/50 rounded w-3/4" />
-                  <div className="h-4 bg-secondary/50 rounded w-1/2" />
-                  <div className="h-4 bg-secondary/50 rounded w-2/3" />
+                
+                {/* Chart Area */}
+                <div className="rounded-lg bg-secondary/20 border border-border p-4 mb-4">
+                  <div className="flex items-center justify-between mb-4">
+                    <p className="text-sm font-medium text-foreground">Analytics Overview</p>
+                    <div className="flex gap-2">
+                      <span className="px-2 py-1 text-xs rounded bg-primary/20 text-primary">Weekly</span>
+                      <span className="px-2 py-1 text-xs rounded bg-secondary text-muted-foreground">Monthly</span>
+                    </div>
+                  </div>
+                  {/* Simulated Chart */}
+                  <div className="flex items-end justify-between h-32 gap-2">
+                    {[40, 65, 45, 80, 55, 90, 70, 85, 60, 95, 75, 88].map((height, i) => (
+                      <div
+                        key={i}
+                        className="flex-1 rounded-t bg-gradient-to-t from-primary/60 to-primary"
+                        style={{ height: `${height}%` }}
+                      />
+                    ))}
+                  </div>
                 </div>
-                <div className="mt-6 h-32 bg-secondary/30 rounded-lg" />
+                
+                {/* Activity List */}
+                <div className="space-y-2">
+                  {[
+                    { user: "Sarah K.", action: "Completed onboarding", time: "2m ago" },
+                    { user: "Mike R.", action: "Upgraded to Pro", time: "5m ago" },
+                  ].map((item, i) => (
+                    <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-secondary/20 border border-border">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-gradient-primary flex items-center justify-center text-xs font-bold text-primary-foreground">
+                          {item.user.charAt(0)}
+                        </div>
+                        <div>
+                          <p className="text-sm font-medium text-foreground">{item.user}</p>
+                          <p className="text-xs text-muted-foreground">{item.action}</p>
+                        </div>
+                      </div>
+                      <span className="text-xs text-muted-foreground">{item.time}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
             
